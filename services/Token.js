@@ -15,8 +15,12 @@ Token.prototype.getX = function(){
 	return this.x;
 }
 
-Token.prototype.setX = function(val){
-	this.x = val;
+Token.prototype.getY = function(){
+	return this.y;
+}
+
+Token.prototype.getColor = function(){
+	return this.color;
 }
 
 /*
