@@ -26,6 +26,7 @@ exports.distanceWithYEqualAndXNotEqual = function(test){
 exports.print = function(test){
 	var board = new Board(4,5);
 	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("o"), 0);
 	board.print();
 	test.done();
 }

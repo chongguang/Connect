@@ -23,8 +23,7 @@ Board.prototype.addToken = function(token, column){
 		}
 		nextAvailablePosition--;
 	}
-	console.log(token.getColor());
-	this.grid[column][nextAvailablePosition] = token.getColor();
+	this.grid[nextAvailablePosition][column] = token.getColor();
 }
 
 Board.prototype.print = function(){
