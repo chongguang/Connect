@@ -1,8 +1,8 @@
 
-var Token = function(){
-	this.x = -1;
-	this.y = -1;
-	this.color = -1;
+var Token = function(x, y, color){
+	this.x = x;
+	this.y = y;
+	this.color = color;
 
 };
 
