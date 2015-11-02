@@ -53,3 +53,29 @@ exports.emptyBoardIsNotAWinCase = function(test){
 	test.done();
 }
 
+//Tests for addToken
+exports.addingASingleToken = function(test){
+	var board = new Board(4,5);
+	board.addToken(new Token("*"),0);
+	test.equals(board.getGrid()[0][0], "*");
+	test.done();
+}
+
+exports.addingATwoTokenOneAboveTheOther = function(test){
+	var board = new Board(4,5);
+	board.addToken(new Token("*"),0);
+	board.addToken(new Token("o"),0);
+	test.equals(board.getGrid()[0][0], "*");
+	test.equals(board.getGrid()[1][0], "o");
+	test.done();
+}
+
+exports.addingATokenInAColumnWhichDoNotExist = function(test){
+	var board = new Board(4,5);
+	test.throws(function(){
+		board.addToken(new Token("*"),4);
+	});
+	test.done();
+}
+
+//End Tests for addToken
