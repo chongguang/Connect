@@ -1,10 +1,9 @@
 
-var Token = function(x, y, color){
-	this.x = x;
-	this.y = y;
+var Token = function(color){
 	this.color = color;
 };
 
+/*
 Token.prototype.getX = function(){
 	return this.x;
 }
@@ -12,6 +11,7 @@ Token.prototype.getX = function(){
 Token.prototype.getY = function(){
 	return this.y;
 }
+*/
 
 Token.prototype.getColor = function(){
 	return this.color;

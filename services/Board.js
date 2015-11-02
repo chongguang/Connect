@@ -31,4 +31,8 @@ Board.prototype.getGrid = function(){
 	return this.grid;
 }
 
+Board.prototype.checkWin = function(){
+	return true;
+}
+
 module.exports = Board;
