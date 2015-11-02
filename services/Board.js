@@ -19,6 +19,15 @@ Board.prototype.addToken = function(token){
 	this.grid[token.getX()][token.getY()] = token;
 }
 
+Board.prototype.print = function(){
+	for(var i = 0; i < rowSize; i++){
+		console.log("----------------------------");
+		for(var j = 0; j < columnSize; j++){
+			console.log("|X|");
+		}
+	}
+}
+
 Board.prototype.getRowSize = function(){
 	return this.rowSize;
 }

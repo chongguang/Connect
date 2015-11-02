@@ -24,11 +24,16 @@ exports.distanceWithYEqualAndXNotEqual = function(test){
 
 // Tests of constructors
 exports.checkBoardSize = function(test){
-	var board = Board(4,5);
+	var board = new Board(4,5);
 	test.equals(board.getRowSize, 4);
 	test.equals(board.getColumnSize, 5);
 	test.equals(board.getGrid.length, 0);
 }
 
+exports.print = function(test){
+	var board = new Board(4,5);
+	board.print();
+	test.done();
+}
 
 ///////////////////////////
