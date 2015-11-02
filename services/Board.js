@@ -78,6 +78,20 @@ Board.prototype.checkWin = function(nbColumn){
 	}
 
 	//Check horizontal
+	for(var i = height - 3; i< height + 3; i++){
+		if(i>=0 && i+3 <this.columnSize
+			&& this.grid[nbColumn][i]
+			&& this.grid[nbColumn][i+1]
+			&& this.grid[nbColumn][i+2]
+			&& this.grid[nbColumn][i+3]
+			&& this.grid[nbColumn][i].getColor() === color
+			&& this.grid[nbColumn][i+1].getColor() === color
+			&& this.grid[nbColumn][i+2].getColor() === color
+			&& this.grid[nbColumn][i+3].getColor() === color){
+			return true;
+		}
+	}
+
 
 	//Check diagnal
 	return false;
