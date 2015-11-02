@@ -22,18 +22,27 @@ exports.distanceWithYEqualAndXNotEqual = function(test){
 	test.done();
 }
 
+exports.print = function(test){
+	var board = new Board(4,5);
+	//board.addToken(new Token(0), 5);
+	//board.print();
+	test.done();
+}
+
 // Tests of constructors
 exports.checkBoardSize = function(test){
 	var board = new Board(4,5);
-	test.equals(board.getRowSize, 4);
-	test.equals(board.getColumnSize, 5);
-	test.equals(board.getGrid.length, 0);
-}
-
-exports.print = function(test){
-	var board = new Board(4,5);
-	board.print();
+	test.equals(board.getRowSize(), 4);
+	test.equals(board.getColumnSize(), 5);
+	var g = board.getGrid();
+	test.equals(g.length, 4);
+	for(var i=0; i<4; i++){
+		test.equals(g[i].length, 5);
+	}
+	
 	test.done();
 }
+
+
 
 ///////////////////////////

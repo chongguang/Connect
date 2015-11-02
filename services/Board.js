@@ -5,7 +5,7 @@ var Board = function(rowSize, columnSize){
 	
 	this.grid = new Array(rowSize);
 	for(var i = 0 ; i < rowSize ; i ++){
-		this.grid.push(new Array(columnSize));
+		this.grid[i] = new Array(columnSize);
 	}
 };
 
@@ -15,16 +15,19 @@ Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
 	return distance ;
 }
 
-Board.prototype.addToken = function(token){
-	this.grid[token.getX()][token.getY()] = token;
+Board.prototype.addToken = function(token, column){
+	nextAvailablePosition = 3;
+	this.grid[column][nextAvailablePosition] = token.getColor();
 }
 
 Board.prototype.print = function(){
-	for(var i = 0; i < rowSize; i++){
+	for(var i = 0; i < this.rowSize; i++){
 		console.log("----------------------------");
-		for(var j = 0; j < columnSize; j++){
-			console.log("|X|");
+		var entireLine = "|";
+		for(var j = 0; j < this.columnSize; j++){
+			entireLine += (this.grid[i][j]) ? this.grid[i][j].color : " |";
 		}
+		console.log(entireLine);
 	}
 }
 
@@ -33,7 +36,7 @@ Board.prototype.getRowSize = function(){
 }
 
 Board.prototype.getColumnSize = function(){
-	return this.ColumnSize;
+	return this.columnSize;
 }
 
 Board.prototype.getGrid = function(){
