@@ -1,11 +1,11 @@
 var Board = require("../services/Board.js");
 var Token = require("../services/Token.js");
 
-
+/*
 exports.distanceShouldBeZeroBetweenTwoEqualPoints = function(test){
 
-	var token1 = new Token(10,10,1);
-	var token2 = new Token(10,10,2);
+	var token1 = new Token(1);
+	var token2 = new Token(0);
 	var myBoard = new Board(10,8);
 
 	test.equals(myBoard.getDistanceBetweenTwoPoints(token1, token2), 0);
@@ -21,11 +21,12 @@ exports.distanceWithYEqualAndXNotEqual = function(test){
 	
 	test.done();
 }
+*/
 
 exports.print = function(test){
 	var board = new Board(4,5);
-	//board.addToken(new Token(0), 5);
-	//board.print();
+	board.addToken(new Token("*"), 0);
+	board.print();
 	test.done();
 }
 
@@ -43,6 +44,11 @@ exports.checkBoardSize = function(test){
 	test.done();
 }
 
-
-
 ///////////////////////////
+// Tests of checkWin()
+exports.emptyBoardIsNotAWinCase = function(test){
+	var board = new Board(4,5);
+	test.ok(board.checkWin(), '');
+	test.done();
+}
+

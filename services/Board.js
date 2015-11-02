@@ -16,19 +16,31 @@ Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
 }
 
 Board.prototype.addToken = function(token, column){
-	nextAvailablePosition = 3;
+	var nextAvailablePosition = this.columnSize;
+	for(var i = this.columnSize-1; i >= 0; i--){
+		if(this.grid[column][i]){
+			break;
+		}
+		nextAvailablePosition--;
+	}
+	console.log(token.getColor());
 	this.grid[column][nextAvailablePosition] = token.getColor();
 }
 
 Board.prototype.print = function(){
-	for(var i = 0; i < this.rowSize; i++){
+	for(var i = this.rowSize-1; i >= 0; i--){
 		console.log("----------------------------");
-		var entireLine = "|";
+		var entireLine = i + " : |";
 		for(var j = 0; j < this.columnSize; j++){
-			entireLine += (this.grid[i][j]) ? this.grid[i][j].color : " |";
+			entireLine += (this.grid[i][j] != null && this.grid[i][j] != undefined) ? this.grid[i][j] + "|": "-|";
 		}
 		console.log(entireLine);
 	}
+	var entireLine = "    ";
+	for(var i = 0; i < this.columnSize; i++){
+		entireLine += " "+i;
+	}
+	console.log(entireLine);
 }
 
 Board.prototype.getRowSize = function(){
@@ -41,6 +53,10 @@ Board.prototype.getColumnSize = function(){
 
 Board.prototype.getGrid = function(){
 	return this.grid;
+}
+
+Board.prototype.checkWin = function(){
+	return true;
 }
 
 module.exports = Board;
