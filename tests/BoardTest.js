@@ -23,6 +23,14 @@ exports.distanceWithYEqualAndXNotEqual = function(test){
 }
 */
 
+exports.print = function(test){
+	var board = new Board(4,5);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("o"), 0);
+	board.print();
+	test.done();
+}
+
 // Tests of constructors
 exports.checkBoardSize = function(test){
 	var board = new Board(4,5);
@@ -37,7 +45,6 @@ exports.checkBoardSize = function(test){
 	test.done();
 }
 
-
 ///////////////////////////
 // Tests of checkWin()
 exports.emptyBoardIsNotAWinCase = function(test){
@@ -45,18 +52,4 @@ exports.emptyBoardIsNotAWinCase = function(test){
 	test.ok(!board.checkWin(), '');
 	test.done();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -15,8 +15,31 @@ Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
 	return distance ;
 }
 
-Board.prototype.addToken = function(token){
-	this.grid[token.getX()][token.getY()] = token;
+Board.prototype.addToken = function(token, column){
+	var nextAvailablePosition = this.columnSize;
+	for(var i = this.columnSize-1; i >= 0; i--){
+		if(this.grid[column][i]){
+			break;
+		}
+		nextAvailablePosition--;
+	}
+	this.grid[nextAvailablePosition][column] = token.getColor();
+}
+
+Board.prototype.print = function(){
+	for(var i = this.rowSize-1; i >= 0; i--){
+		console.log("----------------------------");
+		var entireLine = i + " : |";
+		for(var j = 0; j < this.columnSize; j++){
+			entireLine += (this.grid[i][j] != null && this.grid[i][j] != undefined) ? this.grid[i][j] + "|": "-|";
+		}
+		console.log(entireLine);
+	}
+	var entireLine = "    ";
+	for(var i = 0; i < this.columnSize; i++){
+		entireLine += " "+i;
+	}
+	console.log(entireLine);
 }
 
 Board.prototype.getRowSize = function(){
