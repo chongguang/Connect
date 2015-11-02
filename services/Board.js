@@ -5,7 +5,7 @@ var Board = function(rowCount, columnCount){
 };
 
 Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
-	return 1;
+	return 0;
 }
 
 module.exports = Board;
