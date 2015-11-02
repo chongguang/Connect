@@ -13,4 +13,16 @@ Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
 	return 0;
 }
 
+Board.prototype.getRowSize = function(){
+	return this.rowSize;
+}
+
+Board.prototype.getColumnSize = function(){
+	return this.ColumnSize;
+}
+
+Board.prototype.getGrid = function(){
+	return this.grid;
+}
+
 module.exports = Board;
