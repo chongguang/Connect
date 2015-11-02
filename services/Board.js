@@ -1,7 +1,12 @@
 
-var Board = function(rowCount, columnCount){
-	this.rowCount = rowCount;
-	this.columnCount = columnCount;
+var Board = function(rowSize, columnSize){
+	this.rowSize = rowSize;
+	this.columnSize = columnSize;
+	
+	this.grid = new Array(rowSize);
+	for(var i = 0 ; i < rowSize ; i ++){
+		this.grid.push(new Array(columnSize));
+	}
 };
 
 Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
