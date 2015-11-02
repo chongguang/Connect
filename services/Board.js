@@ -5,7 +5,7 @@ var Board = function(rowSize, columnSize){
 	
 	this.grid = new Array(rowSize);
 	for(var i = 0 ; i < rowSize ; i ++){
-		this.grid.push(new Array(columnSize));
+		this.grid[i] = new Array(columnSize);
 	}
 };
 
@@ -24,7 +24,7 @@ Board.prototype.getRowSize = function(){
 }
 
 Board.prototype.getColumnSize = function(){
-	return this.ColumnSize;
+	return this.columnSize;
 }
 
 Board.prototype.getGrid = function(){
