@@ -54,8 +54,33 @@ Board.prototype.getGrid = function(){
 	return this.grid;
 }
 
-Board.prototype.checkWin = function(){
-	return true;
+Board.prototype.checkWin = function(nbColumn){
+	var height = 0;
+	while(this.grid[height]){
+		height++;
+	};
+
+	var color = this.grid[nbColumn][height];
+
+	//Check vertical
+	for(var i = nbColumn - 3; i< nbColumn + 3; i++){
+		if(i>=0 && i+3 <this.rowSize
+			&& this.grid[i][height]
+			&& this.grid[i+1][height]
+			&& this.grid[i+2][height]
+			&& this.grid[i+3][height]
+			&& this.grid[i][height].getColor() === color
+			&& this.grid[i+1][height].getColor() === color
+			&& this.grid[i+2][height].getColor() === color
+			&& this.grid[i+3][height].getColor() === color){
+			return true;
+		}
+	}
+
+	//Check horizontal
+
+	//Check diagnal
+	return false;
 }
 
 module.exports = Board;

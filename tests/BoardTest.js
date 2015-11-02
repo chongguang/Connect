@@ -49,7 +49,7 @@ exports.checkBoardSize = function(test){
 // Tests of checkWin()
 exports.emptyBoardIsNotAWinCase = function(test){
 	var board = new Board(4,5);
-	test.ok(board.checkWin(), '');
+	test.ok(!board.checkWin(), '');
 	test.done();
 }
 
