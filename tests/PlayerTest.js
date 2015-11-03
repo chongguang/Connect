@@ -24,7 +24,7 @@ exports.playInTheFirstColumn = function(test){
 	
 	test.notEqual(myBoard.getGrid()[0][0], null);
 	test.notEqual(myBoard.getGrid()[0][0], undefined );
-	if(myBoard.getGrid()[0][0]){
+	if(myBoard.getGrid()[0][0]){//We do this test because if the line below rise an error we will not be able to test the remaining tests.
 		test.equal(myBoard.getGrid()[0][0].color, "*");
 	}
 	test.done();
