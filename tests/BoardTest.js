@@ -75,8 +75,6 @@ exports.testADiagnalLeftLowToRightHighWinCondition = function(test){
 	board.addToken(new Token("o"), 3);
 	board.addToken(new Token("o"), 3);
 	board.addToken(new Token("*"), 3);
-	//console.log(board.getGrid());
-	//board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
 	test.ok(board.checkWin(1), 'Oups, this is a win case.');
 	test.ok(board.checkWin(2), 'Oups, this is a win case.');
@@ -99,8 +97,6 @@ exports.testADiagnalRightLowToLeftHighWinCondition = function(test){
 	board.addToken(new Token("o"), 0);
 	board.addToken(new Token("o"), 0);
 	board.addToken(new Token("*"), 0);
-	//console.log(board.getGrid());
-	board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
 	test.ok(board.checkWin(1), 'Oups, this is a win case.');
 	test.ok(board.checkWin(2), 'Oups, this is a win case.');
@@ -123,8 +119,6 @@ exports.testARandomCaseWithoutWinCondition = function(test){
 	board.addToken(new Token("o"), 3);
 	board.addToken(new Token("o"), 3);
 	board.addToken(new Token("*"), 3);
-	//console.log(board.getGrid());
-	//board.print();
 	test.ok(!board.checkWin(0), 'Oups, this is not a win case.');
 	test.done();
 }

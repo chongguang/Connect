@@ -118,14 +118,14 @@ Board.prototype.checkWin = function(nbColumn){
 	//Check diagnal from left-high to right-low
 	for(var i = 0; i<=3; i++){
 		if( (nbColumn - i)  >=0 && (nbColumn + (3-i)) < this.rowSize && (height -1 + i) < this.columnSize && (height -1 - (3-i)) >= 0
-			&& this.grid[nbColumn - i][height -1 -i]
-			&& this.grid[nbColumn - i + 1][height -1 -i - 1]
-			&& this.grid[nbColumn - i + 2][height -1 -i - 2]
-			&& this.grid[nbColumn - i + 3][height -1 -i - 3]
-			&& this.grid[nbColumn - i][height -1 -i].getColor() === color
-			&& this.grid[nbColumn - i + 1][height -1 -i - 1].getColor() === color
-			&& this.grid[nbColumn - i + 2][height -1 -i - 2].getColor() === color
-			&& this.grid[nbColumn - i + 3][height -1 -i - 3].getColor() === color){
+			&& this.grid[nbColumn - i][height -1 +i]
+			&& this.grid[nbColumn - i + 1][height -1 +i - 1]
+			&& this.grid[nbColumn - i + 2][height -1 +i - 2]
+			&& this.grid[nbColumn - i + 3][height -1 +i - 3]
+			&& this.grid[nbColumn - i][height -1 +i].getColor() === color
+			&& this.grid[nbColumn - i + 1][height -1 +i - 1].getColor() === color
+			&& this.grid[nbColumn - i + 2][height -1 +i - 2].getColor() === color
+			&& this.grid[nbColumn - i + 3][height -1 +i - 3].getColor() === color){
 			return true;
 
 		}
