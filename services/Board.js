@@ -28,16 +28,16 @@ Board.prototype.addToken = function(token, column){
 }
 
 Board.prototype.print = function(){
-	for(var i = this.rowSize-1; i >= 0; i--){
+	for(var i = this.columnSize-1; i >= 0; i--){
 		console.log("----------------------------");
 		var entireLine = i + " : |";
-		for(var j = 0; j < this.columnSize; j++){
-			entireLine += (this.grid[i][j] != null && this.grid[i][j] != undefined) ? this.grid[i][j].getColor() + "|": "-|";
+		for(var j = 0; j < this.rowSize; j++){
+			entireLine += (this.grid[j][i] != null && this.grid[j][i] != undefined) ? this.grid[j][i].getColor() + "|": "-|";
 		}
 		console.log(entireLine);
 	}
 	var entireLine = "    ";
-	for(var i = 0; i < this.columnSize; i++){
+	for(var i = 0; i < this.rowSize; i++){
 		entireLine += " "+i;
 	}
 	console.log(entireLine);
