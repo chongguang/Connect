@@ -16,9 +16,7 @@ GameManager.prototype.initGame = function(){
 
 
 GameManager.prototype.play = function(){
-	while(){
 	
-	}
 };
 
 
