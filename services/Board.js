@@ -9,12 +9,6 @@ var Board = function(rowSize, columnSize){
 	}
 };
 
-Board.prototype.getDistanceBetweenTwoPoints = function(point1, point2){
-
-	var distance = Math.sqrt(Math.pow(point2.getX() - point1.getX(),2)) + Math.sqrt(Math.pow(point2.getY() - point1.getY(),2));
-	return distance ;
-}
-
 Board.prototype.addToken = function(token, column){
 	var nextAvailablePosition = this.columnSize;
 	for(var i = this.columnSize-1; i >= 0; i--){

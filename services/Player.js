@@ -21,5 +21,9 @@ Player.prototype.askWhichColumn = function(callback){
 	});
 };
 
+Object.defineProperty(Player, "color", {
+  get: function() {return this.color },
+  set: function(color) { this.color = color }
+});
 
 module.exports = Player;
