@@ -6,7 +6,7 @@ var GameManager = function(player1, player2, board){
 	this.board = board;
 	this.currentPlayer = player1;
 	
-	if(player1.color == player2.color){
+	if(this.player1.color == this.player2.color){
 		throw new Error("player1 and player2 have the same color")
 	}
 };
@@ -18,6 +18,19 @@ GameManager.prototype.initGame = function(){
 
 GameManager.prototype.play = function(){
 	
+	var currentPlayer = this.whichPlayerHasToPlay();
+	var referenceToThis = this;
+
+	currentPlayer.askWhichColumn(function(answer){
+		currentPlayer.play(answer);
+		referenceToThis.board.print();
+		referenceToThis.nextPlayer();
+		if(referenceToThis.checkWin()){
+			console.log("You've WIN sexy bitch !!");
+		}else{
+			referenceToThis.play();
+		}
+	})
 };
 
 GameManager.prototype.whichPlayerHasToPlay = function(){
