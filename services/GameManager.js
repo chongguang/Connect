@@ -25,14 +25,14 @@ GameManager.prototype.whichPlayerHasToPlay = function(){
 };
 
 GameManager.prototype.nextPlayer = function(){
-	if(this.currentPlayer == player1){
-		currentPlayer = player2;
+	if(this.currentPlayer == this.player1){
+		this.currentPlayer = this.player2;
 	}else{
-		currentPlayer = player1;
+		this.currentPlayer = this.player1;
 	}
 };
 
-/*
+
 GameManager.prototype.checkWin = function(nbColumn){
 	var height = 0;
 	var grid = this.board.getGrid();
@@ -112,6 +112,6 @@ GameManager.prototype.checkWin = function(nbColumn){
 
 	return false;
 }
-*/
+
 
 module.exports = GameManager;

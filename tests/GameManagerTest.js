@@ -38,3 +38,20 @@ exports.checkWhoIsPlayingForTheFirstTime = function(test){
 
 	test.done();
 };
+
+exports.switchPlayers = function(test){
+	var myBoard = new Board(5,5);
+	var player1 = new Player(myBoard,'*');
+	var player2 = new Player(myBoard,'o');
+
+	test.doesNotThrow(function(){
+		var myGameManager = new GameManager(player1, player2, myBoard);
+		test.equal(myGameManager.whichPlayerHasToPlay(), player1);
+		myGameManager.nextPlayer();
+		test.equal(myGameManager.whichPlayerHasToPlay(), player2);
+		myGameManager.nextPlayer();
+		test.equal(myGameManager.whichPlayerHasToPlay(), player1);
+	});
+
+	test.done();
+};
