@@ -32,6 +32,7 @@ GameManager.prototype.nextPlayer = function(){
 	}
 };
 
+/*
 GameManager.prototype.checkWin = function(nbColumn){
 	var height = 0;
 	var grid = this.board.getGrid();
@@ -111,5 +112,6 @@ GameManager.prototype.checkWin = function(nbColumn){
 
 	return false;
 }
+*/
 
 module.exports = GameManager;
