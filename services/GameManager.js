@@ -25,7 +25,7 @@ GameManager.prototype.play = function(){
 		currentPlayer.play(answer);
 		referenceToThis.board.print();
 		referenceToThis.nextPlayer();
-		if(referenceToThis.checkWin()){
+		if(referenceToThis.checkWin(answer)){
 			console.log("You've WIN sexy bitch !!");
 		}else{
 			referenceToThis.play();
