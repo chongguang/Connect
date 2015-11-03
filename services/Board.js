@@ -23,7 +23,8 @@ Board.prototype.addToken = function(token, column){
 		}
 		nextAvailablePosition--;
 	}
-	this.grid[nextAvailablePosition][column] = token.getColor();
+	//this.grid[nextAvailablePosition][column] = token.getColor();
+	this.grid[column][nextAvailablePosition] = token;
 }
 
 Board.prototype.print = function(){
@@ -31,7 +32,7 @@ Board.prototype.print = function(){
 		console.log("----------------------------");
 		var entireLine = i + " : |";
 		for(var j = 0; j < this.columnSize; j++){
-			entireLine += (this.grid[i][j] != null && this.grid[i][j] != undefined) ? this.grid[i][j] + "|": "-|";
+			entireLine += (this.grid[i][j] != null && this.grid[i][j] != undefined) ? this.grid[i][j].getColor() + "|": "-|";
 		}
 		console.log(entireLine);
 	}
@@ -56,29 +57,33 @@ Board.prototype.getGrid = function(){
 
 Board.prototype.checkWin = function(nbColumn){
 	var height = 0;
-	while(this.grid[height]){
+	//console.log(this.grid);
+	while(this.grid[nbColumn][height]){
 		height++;
 	};
-
-	var color = this.grid[nbColumn][height];
+	if(height<=0){
+		return false;
+	};
+	var color = this.grid[nbColumn][height-1].getColor();
 
 	//Check vertical
-	for(var i = nbColumn - 3; i< nbColumn + 3; i++){
+	for(var i = nbColumn - 3; i<= nbColumn; i++){
 		if(i>=0 && i+3 <this.rowSize
-			&& this.grid[i][height]
-			&& this.grid[i+1][height]
-			&& this.grid[i+2][height]
-			&& this.grid[i+3][height]
-			&& this.grid[i][height].getColor() === color
-			&& this.grid[i+1][height].getColor() === color
-			&& this.grid[i+2][height].getColor() === color
-			&& this.grid[i+3][height].getColor() === color){
+			&& this.grid[i][height-1]
+			&& this.grid[i+1][height-1]
+			&& this.grid[i+2][height-1]
+			&& this.grid[i+3][height-1]
+			&& this.grid[i][height-1].getColor() === color
+			&& this.grid[i+1][height-1].getColor() === color
+			&& this.grid[i+2][height-1].getColor() === color
+			&& this.grid[i+3][height-1].getColor() === color){
+
 			return true;
 		}
 	}
 
 	//Check horizontal
-	for(var i = height - 3; i< height + 3; i++){
+	for(var i = height - 1 - 3; i< height; i++){
 		if(i>=0 && i+3 <this.columnSize
 			&& this.grid[nbColumn][i]
 			&& this.grid[nbColumn][i+1]
@@ -91,9 +96,33 @@ Board.prototype.checkWin = function(nbColumn){
 			return true;
 		}
 	}
-
+/*
 
 	//Check diagnal
+	if(nbColumn+3<this.rowSize && height - 1 + 3 < this.columnSize
+		&& this.grid[nbColumn + 1][height]
+		&& this.grid[nbColumn + 2][height + 1]
+		&& this.grid[nbColumn + 3][height + 2]
+		&& this.grid[nbColumn + 1][height].getColor() === color
+		&& this.grid[nbColumn + 2][height + 1].getColor() === color
+		&& this.grid[nbColumn + 3][height + 2].getColor() === color  ){
+
+		return true;
+
+	}
+
+	if(nbColumn+2<this.rowSize && height - 1 + 2 < this.columnSize && nbColumn -1 >= 0 && height - 1 -1 >= 0
+		&& this.grid[nbColumn + -1][height -2]
+		&& this.grid[nbColumn + 1][height]
+		&& this.grid[nbColumn + 2][height + 1]
+		&& this.grid[nbColumn + -1][height -2].getColor() === color 
+		&& this.grid[nbColumn + 1][height].getColor() === color
+		&& this.grid[nbColumn + 2][height + 1].getColor() === color ){
+
+		return true;
+
+	}*/
+
 	return false;
 }
 

@@ -49,15 +49,82 @@ exports.checkBoardSize = function(test){
 // Tests of checkWin()
 exports.emptyBoardIsNotAWinCase = function(test){
 	var board = new Board(4,5);
-	test.ok(!board.checkWin(1), '');
+	test.ok(!board.checkWin(1), 'Oups empty board should not have a winner');
 	test.done();
 }
+
+
+exports.testAHorizentalWinCondition = function(test){
+	var board = new Board(6,7);
+	board.addToken(new Token('*'), 0);
+	board.addToken(new Token('*'), 1);
+	board.addToken(new Token('*'), 2);
+	board.addToken(new Token('*'), 3);
+	test.ok(board.checkWin(0), 'Oups, this is a win case.');
+	test.done();
+}
+
+exports.testAVerticalWinCondition = function(test){
+	var board = new Board(6,7);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("*"), 0);
+	test.ok(board.checkWin(0), 'Oups, this is a win case.');
+	test.done();
+}
+
+exports.testADiagnalWinCondition = function(test){
+	var board = new Board(6,7);
+	board.addToken(new Token("*"), 0);
+
+	board.addToken(new Token("o"), 1);
+	board.addToken(new Token("*"), 1);
+
+	board.addToken(new Token("o"), 2);
+	board.addToken(new Token("o"), 2);
+	board.addToken(new Token("*"), 2);
+
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("*"), 3);
+	//console.log(board.getGrid());
+	//board.print();
+	test.ok(board.checkWin(1), 'Oups, this is a win case.');
+	test.done();
+}
+
+exports.testARandomCaseWithoutWinCondition = function(test){
+	var board = new Board(6,7);
+	board.addToken(new Token("*"), 4);
+
+	board.addToken(new Token("o"), 1);
+	board.addToken(new Token("*"), 1);
+
+	board.addToken(new Token("o"), 2);
+	board.addToken(new Token("o"), 2);
+	board.addToken(new Token("*"), 2);
+
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("o"), 3);
+	board.addToken(new Token("*"), 3);
+	//console.log(board.getGrid());
+	//board.print();
+	test.ok(!board.checkWin(0), 'Oups, this is not a win case.');
+	test.done();
+}
+
+
+
+
 
 //Tests for addToken
 exports.addingASingleToken = function(test){
 	var board = new Board(4,5);
 	board.addToken(new Token("*"),0);
-	test.equals(board.getGrid()[0][0], "*");
+	test.equals(board.getGrid()[0][0].getColor(), "*");
 	test.done();
 }
 
@@ -65,8 +132,8 @@ exports.addingATwoTokenOneAboveTheOther = function(test){
 	var board = new Board(4,5);
 	board.addToken(new Token("*"),0);
 	board.addToken(new Token("o"),0);
-	test.equals(board.getGrid()[0][0], "*");
-	test.equals(board.getGrid()[1][0], "o");
+	test.equals(board.getGrid()[0][0].getColor(), "*");
+	test.equals(board.getGrid()[0][1].getColor(), "o");
 	test.done();
 }
 
