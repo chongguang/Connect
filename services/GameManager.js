@@ -27,6 +27,8 @@ GameManager.prototype.play = function(){
 		referenceToThis.nextPlayer();
 		if(referenceToThis.checkWin(answer)){
 			console.log("You've WIN sexy bitch !!");
+		}else if(referenceToThis.gridIsFull()){
+			console.log("Match null !!");
 		}else{
 			referenceToThis.play();
 		}
@@ -45,6 +47,18 @@ GameManager.prototype.nextPlayer = function(){
 	}
 };
 
+GameManager.prototype.gridIsFull = function(){
+
+	for(var i = 0; i < this.board.getRowSize(); i++){
+		for(var j = 0; j < this.board.getColumnSize(); j++){
+			if(this.board.getGrid()[i][j] == null || this.board.getGrid()[i][j] == undefined){
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
 
 GameManager.prototype.checkWin = function(nbColumn){
 	var height = 0;

@@ -61,6 +61,7 @@ exports.gridIsFullAndTheirIsNoWinner = function(test){
 	var player1 = new Player(myBoard,'*');
 	var player2 = new Player(myBoard,'o');
 	var myGameManager = new GameManager(player1, player2, myBoard);
+	/*
 	for(var i = 0; i < myBoard.getRowSize(); i++){
 		for(var j = 0 ; j < (myBoard.getColumnSize()/4); j++){
 			var currentPlayer = myGameManager.whichPlayerHasToPlay();
@@ -73,8 +74,38 @@ exports.gridIsFullAndTheirIsNoWinner = function(test){
 			myGameManager.nextPlayer();
 		}
 	}
+	*/
+	player2.play(0);
+	player1.play(0);
+	player1.play(0);
+	player2.play(0);
+	player1.play(0);
 	
-	myBoard.print();
+	player1.play(1);
+	player1.play(1);
+	player2.play(1);
+	player1.play(1);
+	player2.play(1);
+	
+	player1.play(2);
+	player2.play(2);
+	player1.play(2);
+	player2.play(2);
+	player1.play(2);
+	
+	player1.play(3);
+	player1.play(3);
+	player2.play(3);
+	player2.play(3);
+	player2.play(3);
+	
+	player2.play(4);
+	player1.play(4);
+	player2.play(4);
+	player1.play(4);
+	player2.play(4);
+	
+	test.ok(myGameManager.gridIsFull());
 	test.done();
 };
 
