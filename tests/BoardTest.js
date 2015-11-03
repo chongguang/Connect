@@ -1,27 +1,6 @@
 var Board = require("../services/Board.js");
 var Token = require("../services/Token.js");
 
-/*
-exports.distanceShouldBeZeroBetweenTwoEqualPoints = function(test){
-
-	var token1 = new Token(1);
-	var token2 = new Token(0);
-	var myBoard = new Board(10,8);
-
-	test.equals(myBoard.getDistanceBetweenTwoPoints(token1, token2), 0);
-	test.done();
-}
-
-exports.distanceWithYEqualAndXNotEqual = function(test){
-	var token1 = new Token(10,10,1);
-	var token2 = new Token(11,10,2);
-	var myBoard = new Board(10,8);
-	
-	test.equals(myBoard.getDistanceBetweenTwoPoints(token1, token2), 1);
-	
-	test.done();
-}
-*/
 
 exports.print = function(test){
 	var board = new Board(4,5);
@@ -55,31 +34,34 @@ exports.emptyBoardIsNotAWinCase = function(test){
 
 
 exports.testAHorizentalWinCondition = function(test){
-	var board = new Board(6,7);
+	var board = new Board(7,6);
 	board.addToken(new Token('*'), 0);
 	board.addToken(new Token('*'), 1);
 	board.addToken(new Token('*'), 2);
 	board.addToken(new Token('*'), 3);
 	console.log("testAHorizentalWinCondition");
-	board.print();
+	//board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
+	test.ok(board.checkWin(1), 'Oups, this is a win case.');
+	test.ok(board.checkWin(2), 'Oups, this is a win case.');
+	test.ok(board.checkWin(3), 'Oups, this is a win case.');
 	test.done();
 }
 
 exports.testAVerticalWinCondition = function(test){
-	var board = new Board(6,7);
+	var board = new Board(7,6);
 	board.addToken(new Token("*"), 0);
 	board.addToken(new Token("*"), 0);
 	board.addToken(new Token("*"), 0);
 	board.addToken(new Token("*"), 0);
 	console.log("testAVerticalWinCondition");
-	board.print();
+	//board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
 	test.done();
 }
 
-exports.testADiagnalWinCondition = function(test){
-	var board = new Board(6,7);
+exports.testADiagnalLeftLowToRightHighWinCondition = function(test){
+	var board = new Board(7,6);
 	board.addToken(new Token("*"), 0);
 
 	board.addToken(new Token("o"), 1);
@@ -95,12 +77,39 @@ exports.testADiagnalWinCondition = function(test){
 	board.addToken(new Token("*"), 3);
 	//console.log(board.getGrid());
 	//board.print();
-	//test.ok(board.checkWin(1), 'Oups, this is a win case.');
+	test.ok(board.checkWin(0), 'Oups, this is a win case.');
+	test.ok(board.checkWin(1), 'Oups, this is a win case.');
+	test.ok(board.checkWin(2), 'Oups, this is a win case.');
+	test.ok(board.checkWin(3), 'Oups, this is a win case.');
+	test.done();
+}
+
+exports.testADiagnalRightLowToLeftHighWinCondition = function(test){
+	var board = new Board(7,6);
+	board.addToken(new Token("*"), 3);
+
+	board.addToken(new Token("o"), 2);
+	board.addToken(new Token("*"), 2);
+
+	board.addToken(new Token("o"), 1);
+	board.addToken(new Token("o"), 1);
+	board.addToken(new Token("*"), 1);
+
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("*"), 0);
+	//console.log(board.getGrid());
+	board.print();
+	test.ok(board.checkWin(0), 'Oups, this is a win case.');
+	test.ok(board.checkWin(1), 'Oups, this is a win case.');
+	test.ok(board.checkWin(2), 'Oups, this is a win case.');
+	test.ok(board.checkWin(3), 'Oups, this is a win case.');
 	test.done();
 }
 
 exports.testARandomCaseWithoutWinCondition = function(test){
-	var board = new Board(6,7);
+	var board = new Board(7,6);
 	board.addToken(new Token("*"), 4);
 
 	board.addToken(new Token("o"), 1);
