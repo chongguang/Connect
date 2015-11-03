@@ -57,11 +57,10 @@ GameManager.prototype.checkWin = function(nbColumn){
 		return false;
 	};
 	var color = grid[nbColumn][height-1].getColor();
-	
 
 	//Check vertical
 	for(var i = nbColumn - 3; i<= nbColumn; i++){
-		if(i>=0 && i+3 <this.rowSize
+		if(i>=0 && i+3 <this.board.getRowSize()
 			&& grid[i][height-1]
 			&& grid[i+1][height-1]
 			&& grid[i+2][height-1]
@@ -77,7 +76,7 @@ GameManager.prototype.checkWin = function(nbColumn){
 
 	//Check horizontal
 	for(var i = height - 1 - 3; i< height; i++){
-		if(i>=0 && i+3 <this.columnSize
+		if(i>=0 && i+3 <this.board.getColumnSize()
 			&& grid[nbColumn][i]
 			&& grid[nbColumn][i+1]
 			&& grid[nbColumn][i+2]
@@ -93,7 +92,7 @@ GameManager.prototype.checkWin = function(nbColumn){
 
 	//Check diagnal from left-low to right-high
 	for(var i = 0; i<=3; i++){
-		if( (nbColumn - i)  >=0 && (nbColumn + (3-i)) < this.rowSize && (height -1 -i) >= 0 && (height -1 + (3-i)) < this.columnSize
+		if( (nbColumn - i)  >=0 && (nbColumn + (3-i)) < this.board.getRowSize() && (height -1 -i) >= 0 && (height -1 + (3-i)) < this.board.getColumnSize()
 			&& grid[nbColumn - i][height -1 -i]
 			&& grid[nbColumn - i + 1][height -1 -i + 1]
 			&& grid[nbColumn - i + 2][height -1 -i + 2]
@@ -109,7 +108,7 @@ GameManager.prototype.checkWin = function(nbColumn){
 
 	//Check diagnal from left-high to right-low
 	for(var i = 0; i<=3; i++){
-		if( (nbColumn - i)  >=0 && (nbColumn + (3-i)) < this.rowSize && (height -1 + i) < this.columnSize && (height -1 - (3-i)) >= 0
+		if( (nbColumn - i)  >=0 && (nbColumn + (3-i)) < this.board.getRowSize() && (height -1 + i) < this.board.getColumnSize() && (height -1 - (3-i)) >= 0
 			&& grid[nbColumn - i][height -1 +i]
 			&& grid[nbColumn - i + 1][height -1 +i - 1]
 			&& grid[nbColumn - i + 2][height -1 +i - 2]

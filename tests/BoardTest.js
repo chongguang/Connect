@@ -39,8 +39,6 @@ exports.testAHorizentalWinCondition = function(test){
 	board.addToken(new Token('*'), 1);
 	board.addToken(new Token('*'), 2);
 	board.addToken(new Token('*'), 3);
-	console.log("testAHorizentalWinCondition");
-	//board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
 	test.ok(board.checkWin(1), 'Oups, this is a win case.');
 	test.ok(board.checkWin(2), 'Oups, this is a win case.');
@@ -54,8 +52,6 @@ exports.testAVerticalWinCondition = function(test){
 	board.addToken(new Token("*"), 0);
 	board.addToken(new Token("*"), 0);
 	board.addToken(new Token("*"), 0);
-	console.log("testAVerticalWinCondition");
-	//board.print();
 	test.ok(board.checkWin(0), 'Oups, this is a win case.');
 	test.done();
 }
