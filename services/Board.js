@@ -9,6 +9,11 @@ var Board = function(rowSize, columnSize){
 	}
 };
 
+Board.prototype.isColumnFull = function(column){
+	return (this.grid[column][this.getColumnSize()-1]) ? true : false;
+}
+
+
 Board.prototype.addToken = function(token, column){
 	var nextAvailablePosition = this.columnSize;
 	for(var i = this.columnSize-1; i >= 0; i--){

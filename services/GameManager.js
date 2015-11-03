@@ -22,7 +22,14 @@ GameManager.prototype.play = function(){
 	var referenceToThis = this;
 
 	currentPlayer.askWhichColumn(function(answer){
-		currentPlayer.play(answer);
+		try{
+			currentPlayer.play(answer);
+		}catch(error){
+			console.log("Sorry please retry and put a good value");
+			referenceToThis.play();
+			return;//We exit right now otherwise I will execute the rest of the function
+		}
+		
 		referenceToThis.board.print();
 		referenceToThis.nextPlayer();
 		if(referenceToThis.checkWin(answer)){

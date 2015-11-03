@@ -10,6 +10,28 @@ exports.print = function(test){
 	test.done();
 }
 
+exports.checkIfColumnIsFull = function(test){
+	var board = new Board(4,5);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	
+	test.ok(board.isColumnFull(0));
+	test.done();
+}
+
+exports.checkIfColumnIsNotFull = function(test){
+	var board = new Board(4,5);
+	board.addToken(new Token("*"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	board.addToken(new Token("o"), 0);
+	test.ok(!board.isColumnFull(0));
+	test.done();
+}
+
 // Tests of constructors
 exports.checkBoardSize = function(test){
 	var board = new Board(4,5);

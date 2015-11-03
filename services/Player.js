@@ -7,7 +7,14 @@ var Player = function(board, color){
 };
 
 Player.prototype.play = function(column){
-	this.board.addToken(new Token(this.color),column);
+
+	if(column >= 0 && column < this.board.getRowSize() && !this.board.isColumnFull(column)){
+		this.board.addToken(new Token(this.color),column);
+	}else{
+		throw new Error("Please enter a good value");
+	}
+
+	
 };
 
 Player.prototype.askWhichColumn = function(callback){
