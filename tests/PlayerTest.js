@@ -15,3 +15,17 @@ exports.playInAWrongColumn = function(test){
 	
 	test.done();
 };
+
+exports.playInTheFirstColumn = function(test){
+	var myBoard = new Board(7,6)
+	
+	var player1 = new Player(myBoard, "*");
+	player1.play(0);
+	
+	test.notEqual(myBoard.getGrid()[0][0], null);
+	test.notEqual(myBoard.getGrid()[0][0], undefined );
+	if(myBoard.getGrid()[0][0]){
+		test.equal(myBoard.getGrid()[0][0].color, "*");
+	}
+	test.done();
+}
