@@ -9,6 +9,8 @@ var Board = function(rowSize, columnSize){
 	}
 };
 
+//test for pull request
+
 Board.prototype.isColumnFull = function(column){
 	return (this.grid[column][this.getColumnSize()-1]) ? true : false;
 }
