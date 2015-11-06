@@ -12,7 +12,7 @@ var GameManager = function(player1, player2, board){
 };
 
 GameManager.prototype.initGame = function(){
-	console.log("Welcome to our super handsome game");
+	console.log("Welcome to our super handsome game !!!");
 };
 
 
